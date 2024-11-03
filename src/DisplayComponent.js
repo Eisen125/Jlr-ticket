@@ -132,14 +132,16 @@ const DisplayComponent = () => {
       const submitDateTime = new Date(submitDateTimeString);
   
       if (isNaN(submitDateTime.getTime())) {
-        return '#90EE90'; // Light green
+        
         console.error('Invalid date time string:', submitDateTimeString);
+        return '#90EE90'; // Light green
+        
 
       }
       //check 
   
       const currentDateTime = new Date();
-      const hoursDifference = (currentDateTime - submitDateTime) / (1000 * 60 * 60);
+      const hoursDifference = (currentDateTime.getTime() - submitDateTime.getTime()) / (1000 * 60 * 60);
       console.log('Hours Difference:', hoursDifference);
       if (hoursDifference <= 3) return '#90EE90'; // Light green
       if (hoursDifference <= 8) return '#ADFF2F'; // Green-yellow
